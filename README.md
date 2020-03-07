@@ -27,7 +27,7 @@ To build from source, **VC++ 2019 and MFC** are needed
 
 # Debugging Tips
 
-##Debugging using Visual Studio 2019
+## Debugging using Visual Studio 2019
 
 If (for any reason) you have Visual Studio 2019 on the machine you are using to analyze the Shellcode, then you can utilize the local debugger to debug the Shellcode (same strict rules should apply regarding the safe and isolated environment for malware analysis).
 
