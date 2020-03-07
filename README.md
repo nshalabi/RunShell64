@@ -27,4 +27,4 @@ To build from source, **VC++ 2019 and MFC** are needed
 
 # Debugging Tips
 
-## ![Debugging using Visual Studio 2019](https://github.com/nshalabi/RunShell64/blob/master/Extra/DEBUG_VS_2019.md)
+## [Debugging using Visual Studio 2019](https://github.com/nshalabi/RunShell64/blob/master/Extra/DEBUG_VS_2019.md)
