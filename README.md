@@ -27,45 +27,4 @@ To build from source, **VC++ 2019 and MFC** are needed
 
 # Debugging Tips
 
-## Debugging using Visual Studio 2019
-
-If (for any reason) you have Visual Studio 2019 on the machine you are using to analyze the Shellcode, then you can utilize the local debugger to debug the Shellcode (same strict rules should apply regarding the safe and isolated environment for malware analysis).
-
-I will use the "sc-x64-mba-ret.bin" for testing and Visual Studio 2019 with MFC. This is the Shellcode loaded in IDA Pro
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/0.PNG "RunShell64")
-
-Download the RunShell64 and open the project in Visual Studio 2019, run (Debug -> Start Debugging or use F5), load the Shellcode file "sc-x64-mba-ret.bin", select the "Set Breakpoint" option and run the Shellcode, then confirm running the Shellcode prompt.
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/1.PNG "RunShell64")
-
-Visual Studio will break at the code calling the Shellcode, actually, the function is a pointer to the Shellcode loaded in memory
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/2.PNG "RunShell64")
-
-To debug Shellcode, step into code (Debug -> Step Into or use F11), Visual Studio will prompt that it couldn't identify a function frame (as stated earlier, this is because the function we are calling is actually a pointer to an allocated memory region populated with Shellcode, so there is no function call, hence, no stack frame)
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/3.PNG "RunShell64")
-
-Click on "View Disassembly" to land on the Shellcode as shown here (Compare it to IDA Pro showed previously)
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/4.PNG "RunShell64")
-
-You can now debug Shellcode, despite the lack of convenience provided by other standalone debuggers.
-Examining IDA Disassembly, we know that the "MessageBoxA" API function name will be loaded in RDX register (instruction at 0x1BD2ACA0442 `lea rdx, [1BD2AACA05F4h])`
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/5.PNG "RunShell64")
-
-To demonstrate how to evaluate memory addresses, while still debugging, select the memory address in `lea rdx, [1BD2AACA05F4h]` instruction, right-click and select add to QuickWatch...
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/6.PNG "RunShell64")
-
-To view the value the pointer is pointing to (string value), we need to direct the debugger to interpret the pointer as a pointer to characters (char*) by typecasting the value. 
-Adjust the "Expression" to typecast it to a character pointer (char*) : `((char*)1BD2AACA05F4h)`
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/7.PNG "RunShell64")
-
-Click on "Reevaluate", if no error (for example, extra or missing parenthesis), click on "Add Watch" (not needed, but in case this pointer changes during the run, then you don't need to keep reevaluating it).
-
-![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/8.PNG "RunShell64")
-
+## ![Debugging using Visual Studio 2019](https://github.com/nshalabi/RunShell64/blob/master/Extra/DEBUG_VS_2019.md)
