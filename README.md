@@ -28,4 +28,4 @@ To build from source, **VC++ 2019 and MFC** are needed
 # Debugging Tips
 
 #### 1. [Debugging using Visual Studio 2019](https://github.com/nshalabi/RunShell64/blob/master/Extra/DEBUG_VS_2019.md)
-#### 2. [Intercepting API calls in Shellcode using Frida](https://github.com/nshalabi/RunShell64/blob/master/Extra/FRIDA.md)
+#### 2. [Intercepting API calls in Shellcode using Frida](https://github.com/nshalabi/RunShell64/blob/master/Extra/INTERCEPT_API_FRIDA.md)
