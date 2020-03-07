@@ -10,6 +10,7 @@ To carry out the following steps, install Python 3.x and Frida (https://frida.re
 
 Open RunShell64.exe and load **"sc-x64-mba-ret.bin"** Shellcode file, hit the "Run" command and DON'T CONFIRM running the Shellcode yet. 
 Then open a command prompt and attach Frida to the RunShell64 Process ID (-p) instructing the tool to include the MessageBoxA and LoadLibrary API functions (-i):
+
 `frida-trace -p 2056 -i MessageBoxA -i LoadLibraryA`
 
 ![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/FRIDA/1.PNG "RunShell64")
