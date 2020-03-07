@@ -51,5 +51,5 @@ Run the Shellcode again
 
 ![RunShell64](https://github.com/nshalabi/RunShell64/blob/master/Art/FRIDA/9.PNG "RunShell64")
 
-Frida is a powerful toolkit and supported on many platforms, including mobile platforms.
+Frida is a powerful toolkit and supported on many platforms, including mobile platforms, and it has many use cases other than API interception.
 
