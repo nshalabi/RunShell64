@@ -8,12 +8,6 @@
 -   In Version 2.0, I moved from Embarcadero C++Builder & VCL to VC++ 2019 & MFC
 -   Two option to debug: Automatic breakpoint (INT3) + Manual breakpoint
 
-# Future enhancements
-
--   Interception of API calls (**Done**, please check the "Debugging Tips")
--   Provide two options to load additional file handles (CreateFile vs fopen)
--   Adjust registers values
-
 # Testing
 
 -   The "Shellcode" folder contains compiled shellcode
