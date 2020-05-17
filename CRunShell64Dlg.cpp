@@ -219,7 +219,19 @@ void CCRunShell64Dlg::Run64Shellcode(CString strFilename, bool bDebug) {
 		CloseHandle(hFile);
 	}
 
+#if _WIN64
 	m_lpFunc();
+#else
+	// This is needed to avoid the following error in 32-bit:
+	// Run-Time Check Failure #0 - The value of ESP was not properly saved across a function call.  
+	// This is usually a result of calling a function declared with one calling convention with a function
+	// pointer declared with a different calling convention.
+
+	LPBYTE pFunc = (LPBYTE)m_lpBuffer;
+	__asm {
+		call pFunc
+	}
+#endif // #if _WIN64
 }
 
 void CCRunShell64Dlg::Run64ShellcodeWithBP(CString strFilename, bool bDebug) {
@@ -337,7 +349,19 @@ void CCRunShell64Dlg::Run64ShellcodeWithBP(CString strFilename, bool bDebug) {
 		CloseHandle(hFile);
 	}
 
+#if _WIN64
 	m_lpFunc();
+#else
+	// This is needed to avoid the following error in 32-bit:
+	// Run-Time Check Failure #0 - The value of ESP was not properly saved across a function call.  
+	// This is usually a result of calling a function declared with one calling convention with a function
+	// pointer declared with a different calling convention.
+
+	LPBYTE pFunc = (LPBYTE)m_lpBuffer;
+	__asm {
+		call pFunc
+	}
+#endif // #if _WIN64
 }
 
 void CCRunShell64Dlg::LoadAdditionalFiles()
@@ -414,6 +438,10 @@ BOOL CCRunShell64Dlg::OnInitDialog()
 	if (!IsDebuggerPresent()) {
 		m_LabelWarning.ShowWindow(TRUE);
 	}
+
+#if !defined(_WIN64)
+	this->SetWindowText(L"RunShell32 - 2.0");
+#endif //#if !defined(_WIN64)
 
 	// Update controls
 	UpdateData(FALSE);
