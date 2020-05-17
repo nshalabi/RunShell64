@@ -1,5 +1,5 @@
 # RunShell64
-## Small utility to help in x64 and x86 shellcode analysis and debugging
+## Small utility to help in x86/x64 shellcode analysis and debugging
 
 # Release Notes
 
